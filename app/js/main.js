@@ -6,17 +6,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Card = function Card(stats) {
   stats = stats || {};
-  this.editions = stats.editions;
+  // this.editions = stats.editions;
+  this.editions = stats.editions[0].image_url;
   this.name = stats.name;
-  this.id = stats.id;
   this.power = stats.power;
   this.toughness = stats.toughness;
 };
-
 exports["default"] = Card;
 module.exports = exports["default"];
 
 },{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var decktype = {
+	decklist: function decklist(stats) {
+		return "\n\t\t\t<p>" + stats.name + "</p>\n\t\t\t<p>" + stats.power + "</p>\n\t\t\t<p>" + stats.toughness + "</p>\n\t\t\t<img src=\"" + stats.editions + "\">\n\n\t\t\t";
+	}
+};
+
+exports["default"] = decktype;
+module.exports = exports["default"];
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35,7 +49,7 @@ var Enemy = function Enemy() {
 exports["default"] = Enemy;
 module.exports = exports["default"];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -60,20 +74,9 @@ var _card = require('./card');
 
 var _card2 = _interopRequireDefault(_card);
 
-// Vampire Creature Cards Array
-var vampireURL = 'https://api.deckbrew.com/mtg/cards?name=vampire&type=creature';
-var vampireDeck = [];
-var vampireCardRequest = _jquery2['default'].getJSON(vampireURL);
+var _decktype = require('./decktype');
 
-vampireCardRequest.then(function (response) {
-  _underscore2['default'].each(response, function (card) {
-
-    var deck = new _card2['default'](card);
-    vampireDeck.push(deck);
-  });
-
-  console.log(vampireDeck);
-});
+var _decktype2 = _interopRequireDefault(_decktype);
 
 // Zombie Creature Cards Array
 var zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
@@ -81,57 +84,106 @@ var zombieDeck = [];
 var zombieCardRequest = _jquery2['default'].getJSON(zombieURL);
 
 zombieCardRequest.then(function (response) {
-  _underscore2['default'].each(response, function (card) {
+	_underscore2['default'].each(response, function (card) {
 
-    var deck = new _card2['default'](card);
-    zombieDeck.push(deck);
-  });
+		var deck = new _card2['default'](card);
+		zombieDeck.push(deck);
+		(0, _jquery2['default'])('.zombieDeck').append(_decktype2['default'].decklist(deck));
+	});
 
-  console.log(zombieDeck);
+	console.log(zombieDeck);
 });
 
-// Good Guy Instance
-var Gideon = new _planeswalker2['default']();
+// Vampire Creature Cards Array
+var vampireURL = 'https://api.deckbrew.com/mtg/cards?name=vampire&type=creature';
+var vampireDeck = [];
+var vampireCardRequest = _jquery2['default'].getJSON(vampireURL);
 
-// Bad Guy Instance
-var Jace = new _enemy2['default']();
+vampireCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
 
-// DOM Nodes Selected
-var ggHealth = (0, _jquery2['default'])('.ggHealth');
-var bgHealth = (0, _jquery2['default'])('.bgHealth');
+		var deck = new _card2['default'](card);
+		vampireDeck.push(deck);
+		// $('.vampireDeck').append(decktype.decklist(deck));
+	});
 
-var ggAttack = (0, _jquery2['default'])('.ggAttack');
-
-// Show current (default) health
-ggHealth.text(Gideon.health);
-bgHealth.text(Jace.health);
-
-// Setting up ON Events
-ggAttack.on('click', function () {
-
-  // Generate a random amount of hit points
-  // Then attack!!!
-  var num = _underscore2['default'].random(0, 25);
-  Jace.hit(num);
-
-  if (Jace.health <= 0) {
-    bgHealth.text('Defeated');
-    alert('Mario Wins!!');
-  } else {
-    bgHealth.text(Jace.health);
-    alert('Bowser Fights Back!!!');
-    Gideon.hit(10);
-    ggHealth.css('color', 'red');
-    ggHealth.text(Gideon.health);
-    setTimeout(function () {
-      ggHealth.css('color', 'black');
-    }, 1000);
-  }
-
-  console.log(Jace);
+	console.log(vampireDeck);
 });
 
-},{"./card":1,"./enemy":2,"./planeswalker":4,"jquery":5,"underscore":6}],4:[function(require,module,exports){
+// Wolf Creature Cards Array
+var wolfURL = 'https://api.deckbrew.com/mtg/cards?name=wolf&type=creature';
+var wolfDeck = [];
+var wolfCardRequest = _jquery2['default'].getJSON(wolfURL);
+
+wolfCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
+
+		var deck = new _card2['default'](card);
+		wolfDeck.push(deck);
+		// $('.wolfDeck').append(decktype.decklist(deck));
+	});
+
+	console.log(wolfDeck);
+});
+
+// Golem Creature Cards Array
+var golemURL = 'https://api.deckbrew.com/mtg/cards?name=golem&type=creature';
+var golemDeck = [];
+var golemCardRequest = _jquery2['default'].getJSON(golemURL);
+
+golemCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
+
+		var deck = new _card2['default'](card);
+		golemDeck.push(deck);
+		// $('.golemDeck').append(decktype.decklist(deck));
+	});
+
+	console.log(golemDeck);
+});
+
+// // Good Guy Instance
+// let Gideon = new Planeswalker();
+
+// // Bad Guy Instance
+// let Jace = new Enemy();
+
+// // DOM Nodes Selected
+// let ggHealth = $('.ggHealth');
+// let bgHealth = $('.bgHealth');
+
+// let ggAttack = $('.ggAttack');
+
+// // Show current (default) health
+// ggHealth.text(Gideon.health);
+// bgHealth.text(Jace.health);
+
+// // Setting up ON Events
+// ggAttack.on('click', function () {
+
+//   // Generate a random amount of hit points
+//   // Then attack!!!
+//   let num = _.random(0, 25);
+//   Jace.hit(num);
+
+//   if (Jace.health <= 0) {
+//     bgHealth.text('Defeated');
+//     alert('Mario Wins!!')
+//   } else {
+//     bgHealth.text(Jace.health);
+//     alert('Bowser Fights Back!!!');
+//     Gideon.hit(10);
+//     ggHealth.css('color', 'red');
+//     ggHealth.text(Gideon.health);
+//     setTimeout( function () {
+//       ggHealth.css('color', 'black');
+//     }, 1000);
+//   }
+
+//   console.log(Jace);
+// });
+
+},{"./card":1,"./decktype":2,"./enemy":3,"./planeswalker":5,"jquery":6,"underscore":7}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -150,7 +202,7 @@ var Planeswalker = function Planeswalker() {
 exports["default"] = Planeswalker;
 module.exports = exports["default"];
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9362,7 +9414,7 @@ return jQuery;
 
 }));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -10912,7 +10964,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[3])
+},{}]},{},[4])
 
 
 //# sourceMappingURL=main.js.map

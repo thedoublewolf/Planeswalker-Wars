@@ -6,13 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Card = function Card(stats) {
   stats = stats || {};
-  this.editions = stats.editions;
+  // this.editions = stats.editions;
+  this.editions = stats.editions[0].image_url;
   this.name = stats.name;
-  this.id = stats.id;
   this.power = stats.power;
   this.toughness = stats.toughness;
 };
-
 exports["default"] = Card;
 module.exports = exports["default"];
 
