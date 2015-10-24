@@ -60,6 +60,7 @@ function drawRandomVampire () {
 function drawVampireCard () {
 		var currentVampireCard = drawRandomVampire();
 		if (currentVampireCard) {
+			$('.magicCard').remove();
 			$('#vampireDeck').append(currentVampireCard.toString());
 	}
 };
@@ -92,6 +93,7 @@ function drawRandomWolf () {
 function drawWolfCard () {
 		var currentWolfCard = drawRandomWolf();
 		if (currentWolfCard) {
+			$('.magicCard').remove();
 			$('#wolfDeck').append(currentWolfCard.toString());
 	}
 };

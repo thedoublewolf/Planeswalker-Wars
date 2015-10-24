@@ -116,6 +116,7 @@ function drawRandomVampire() {
 function drawVampireCard() {
 	var currentVampireCard = drawRandomVampire();
 	if (currentVampireCard) {
+		(0, _jquery2['default'])('.magicCard').remove();
 		(0, _jquery2['default'])('#vampireDeck').append(currentVampireCard.toString());
 	}
 };
@@ -148,6 +149,7 @@ function drawRandomWolf() {
 function drawWolfCard() {
 	var currentWolfCard = drawRandomWolf();
 	if (currentWolfCard) {
+		(0, _jquery2['default'])('.magicCard').remove();
 		(0, _jquery2['default'])('#wolfDeck').append(currentWolfCard.toString());
 	}
 };
