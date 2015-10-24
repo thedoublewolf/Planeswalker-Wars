@@ -13,7 +13,7 @@ var Card = function Card(stats) {
 };
 
 Card.prototype.toString = function () {
-  return "\n\t\t\t<img src=\"" + this.editions + "\">\n\t\t\t";
+  return "\n\t\t\t<img class=\"magicCard\" src=\"" + this.editions + "\">\n\t\t\t";
 };
 
 exports["default"] = Card;
@@ -51,17 +51,13 @@ var _underscore = require('underscore');
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _planeswalker = require('./planeswalker');
+var _card = require('./card');
 
-var _planeswalker2 = _interopRequireDefault(_planeswalker);
+var _card2 = _interopRequireDefault(_card);
 
 var _enemy = require('./enemy');
 
 var _enemy2 = _interopRequireDefault(_enemy);
-
-var _card = require('./card');
-
-var _card2 = _interopRequireDefault(_card);
 
 // Zombie Creature Cards Array
 var zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
@@ -73,34 +69,26 @@ zombieCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		zombieDeck.push(deck);
-		// $('#zombieDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(zombieDeck);
 });
 
-// Draw cards from zombie deck
+// Draw cards from Zombie deck
 
-function drawRandomCard() {
-	return zombieDeck[Math.floor(Math.random() * vampireDeck.length)];
-}
-
-function drawCard() {
-	var cardCanvas = document.getElementById('cardCanvas');
-	var context = cardCanvas.getContext('2d');
-
-	if (context) {
-		var currentCard = drawRandomCard();
-		if (currentCard) {
-
-			(0, _jquery2['default'])('#zombieDeck').append(currentCard.toString());
-			console.log(currentCard.toString());
-		}
-	}
+function drawRandomZombie() {
+	return zombieDeck[Math.floor(Math.random() * zombieDeck.length)];
 };
 
-(0, _jquery2['default'])('#btnDrawCard').on('click', function () {
-	drawCard();
+function drawZombieCard() {
+	var currentZombieCard = drawRandomZombie();
+	if (currentZombieCard) {
+		(0, _jquery2['default'])('.magicCard').remove();
+		(0, _jquery2['default'])('#zombieDeck').append(currentZombieCard.toString());
+	};
+};
+(0, _jquery2['default'])('#btnDrawZombie').on('click', function () {
+	drawZombieCard();
 });
 
 //-----------------------//
@@ -115,11 +103,27 @@ vampireCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		vampireDeck.push(deck);
-		// $('#vampireDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(vampireDeck);
 });
+
+// Draw cards from Vampire deck
+
+function drawRandomVampire() {
+	return vampireDeck[Math.floor(Math.random() * vampireDeck.length)];
+};
+function drawVampireCard() {
+	var currentVampireCard = drawRandomVampire();
+	if (currentVampireCard) {
+		(0, _jquery2['default'])('#vampireDeck').append(currentVampireCard.toString());
+	}
+};
+(0, _jquery2['default'])('#btnDrawVampire').on('click', function () {
+	drawVampireCard();
+});
+
+//-----------------------//
 
 // Wolf Creature Cards Array
 var wolfURL = 'https://api.deckbrew.com/mtg/cards?name=wolf&type=creature';
@@ -131,11 +135,27 @@ wolfCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		wolfDeck.push(deck);
-		// $('#wolfDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(wolfDeck);
 });
+
+// Draw cards from Wolf deck
+
+function drawRandomWolf() {
+	return wolfDeck[Math.floor(Math.random() * wolfDeck.length)];
+};
+function drawWolfCard() {
+	var currentWolfCard = drawRandomWolf();
+	if (currentWolfCard) {
+		(0, _jquery2['default'])('#wolfDeck').append(currentWolfCard.toString());
+	}
+};
+(0, _jquery2['default'])('#btnDrawWolf').on('click', function () {
+	drawWolfCard();
+});
+
+//-----------------------//
 
 // // Good Guy Instance
 // let Gideon = new Planeswalker();
@@ -178,26 +198,7 @@ wolfCardRequest.then(function (response) {
 //   console.log(Jace);
 // });
 
-},{"./card":1,"./enemy":2,"./planeswalker":4,"jquery":5,"underscore":6}],4:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var Planeswalker = function Planeswalker() {
-  this.health = 40;
-  this.cards = function () {};
-  this.hit = function (num) {
-    var hitPoints = num || 10;
-    return this.health = this.health - hitPoints;
-  };
-};
-
-exports["default"] = Planeswalker;
-module.exports = exports["default"];
-
-},{}],5:[function(require,module,exports){
+},{"./card":1,"./enemy":2,"jquery":4,"underscore":5}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9409,7 +9410,7 @@ return jQuery;
 
 }));
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors

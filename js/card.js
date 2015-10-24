@@ -8,7 +8,7 @@ let Card = function (stats) {
 
 Card.prototype.toString = function () {
 	return `
-			<img src="${this.editions}">
+			<img class="magicCard" src="${this.editions}">
 			`;
 };
 

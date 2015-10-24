@@ -1,9 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
-
-import Planeswalker from './planeswalker';
-import Enemy from './enemy';
 import Card from './card';
+import Enemy from './enemy';
 
 // Zombie Creature Cards Array
 let zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
@@ -15,42 +13,29 @@ zombieCardRequest.then( function (response) {
 
 		let deck = new Card(card);
 		zombieDeck.push(deck);
-		// $('#zombieDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(zombieDeck);
 });
 
-// Draw cards from zombie deck
+// Draw cards from Zombie deck
 
-function drawRandomCard () {
-	return zombieDeck[ Math.floor(Math.random() * vampireDeck.length) ];
-
-}
-
-function drawCard() {
-	var cardCanvas = document.getElementById('cardCanvas');
-	var context = cardCanvas.getContext('2d');
-
-	if(context) {
-		var currentCard = drawRandomCard();
-		if (currentCard) {
-
-			$('#zombieDeck').append(currentCard.toString());
-			console.log(currentCard.toString());
-		}
-	}
+function drawRandomZombie () {
+	return zombieDeck[ Math.floor(Math.random() * zombieDeck.length) ];
 };
 
-$('#btnDrawCard').on('click', function (){
-	drawCard();
+function drawZombieCard () {
+		var currentZombieCard = drawRandomZombie();
+		if (currentZombieCard) {
+			$('.magicCard').remove();
+			$('#zombieDeck').append(currentZombieCard.toString());
+	};
+};
+$('#btnDrawZombie').on('click', function (){
+	drawZombieCard();
 });
 
 //-----------------------//
-
-
-
-
 
 // Vampire Creature Cards Array
 let vampireURL = 'https://api.deckbrew.com/mtg/cards?name=vampire&type=creature';
@@ -62,11 +47,27 @@ vampireCardRequest.then( function (response) {
 
 		let deck = new Card(card);
 		vampireDeck.push(deck);
-		// $('#vampireDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(vampireDeck);
 });
+
+// Draw cards from Vampire deck
+
+function drawRandomVampire () {
+	return vampireDeck[ Math.floor(Math.random() * vampireDeck.length) ];
+};
+function drawVampireCard () {
+		var currentVampireCard = drawRandomVampire();
+		if (currentVampireCard) {
+			$('#vampireDeck').append(currentVampireCard.toString());
+	}
+};
+$('#btnDrawVampire').on('click', function (){
+	drawVampireCard();
+});
+
+//-----------------------//
 
 // Wolf Creature Cards Array
 let	wolfURL = 'https://api.deckbrew.com/mtg/cards?name=wolf&type=creature';
@@ -78,11 +79,27 @@ wolfCardRequest.then( function (response) {
 
 		let deck = new Card(card);
 		wolfDeck.push(deck);
-		// $('#wolfDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(wolfDeck);
 });
+
+// Draw cards from Wolf deck
+
+function drawRandomWolf () {
+	return wolfDeck[ Math.floor(Math.random() * wolfDeck.length) ];
+};
+function drawWolfCard () {
+		var currentWolfCard = drawRandomWolf();
+		if (currentWolfCard) {
+			$('#wolfDeck').append(currentWolfCard.toString());
+	}
+};
+$('#btnDrawWolf').on('click', function (){
+	drawWolfCard();
+});
+
+//-----------------------//
 
 
 
