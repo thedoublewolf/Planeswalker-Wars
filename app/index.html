@@ -6,28 +6,31 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+
+<div id="container" class="container">
   <h1>Greetings, Planeswalker!  Choose your deck:</h1>
 
-  
-  <div class="zombieDeck">
+  <div id="zombieDeck" class="deckSelection">
     <h3>Zombies <!-- <span class="ggHealth"></span> --></h3>
    <!--  <button class="ggAttack">Attack Bowser</button> -->
   </div>
 
-  <div class="vampireDeck">
+  <div id="vampireDeck" class="deckSelection">
     <h3>Vampires <!-- <span class="bgHealth"></span> --></h3>
   </div>
 
-  <div class="wolfDeck">
+  <div id="wolfDeck" class="deckSelection">
     <h3>Wolves <!-- <span class="bgHealth"></span> --></h3>
   </div>
 
-  <div class="golemDeck">
-    <h3>Golems <!-- <span class="bgHealth"></span> --></h3>
-  </div>
+  <input type="button" value="Draw A Card" id="btnDrawCard">
+ </div>
+ 
+ <div id="canvasContainer">
+ 	<canvas id="cardCanvas" width="600px" height="600px">
+ 	</canvas>
+ </div>
 
-
-  
   <script src="js/main.js"></script>
 </body>
 </html>

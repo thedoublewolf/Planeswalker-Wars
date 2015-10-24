@@ -6,12 +6,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Card = function Card(stats) {
   stats = stats || {};
-  // this.editions = stats.editions;
   this.editions = stats.editions[0].image_url;
   this.name = stats.name;
   this.power = stats.power;
   this.toughness = stats.toughness;
 };
+
+Card.prototype.toString = function () {
+  return "\n\t\t\t<img src=\"" + this.editions + "\">\n\t\t\t";
+};
+
 exports["default"] = Card;
 module.exports = exports["default"];
 

@@ -6,31 +6,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Card = function Card(stats) {
   stats = stats || {};
-  // this.editions = stats.editions;
   this.editions = stats.editions[0].image_url;
   this.name = stats.name;
   this.power = stats.power;
   this.toughness = stats.toughness;
 };
+
+Card.prototype.toString = function () {
+  return "\n\t\t\t<img src=\"" + this.editions + "\">\n\t\t\t";
+};
+
 exports["default"] = Card;
 module.exports = exports["default"];
 
 },{}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var decktype = {
-	decklist: function decklist(stats) {
-		return "\n\t\t\t<p>" + stats.name + "</p>\n\t\t\t<p>" + stats.power + "</p>\n\t\t\t<p>" + stats.toughness + "</p>\n\t\t\t<img src=\"" + stats.editions + "\">\n\n\t\t\t";
-	}
-};
-
-exports["default"] = decktype;
-module.exports = exports["default"];
-
-},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49,7 +38,7 @@ var Enemy = function Enemy() {
 exports["default"] = Enemy;
 module.exports = exports["default"];
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -74,10 +63,6 @@ var _card = require('./card');
 
 var _card2 = _interopRequireDefault(_card);
 
-var _decktype = require('./decktype');
-
-var _decktype2 = _interopRequireDefault(_decktype);
-
 // Zombie Creature Cards Array
 var zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
 var zombieDeck = [];
@@ -88,11 +73,37 @@ zombieCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		zombieDeck.push(deck);
-		(0, _jquery2['default'])('.zombieDeck').append(_decktype2['default'].decklist(deck));
+		// $('#zombieDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(zombieDeck);
 });
+
+// Draw cards from zombie deck
+
+function drawRandomCard() {
+	return zombieDeck[Math.floor(Math.random() * vampireDeck.length)];
+}
+
+function drawCard() {
+	var cardCanvas = document.getElementById('cardCanvas');
+	var context = cardCanvas.getContext('2d');
+
+	if (context) {
+		var currentCard = drawRandomCard();
+		if (currentCard) {
+
+			(0, _jquery2['default'])('#zombieDeck').append(currentCard.toString());
+			console.log(currentCard.toString());
+		}
+	}
+};
+
+(0, _jquery2['default'])('#btnDrawCard').on('click', function () {
+	drawCard();
+});
+
+//-----------------------//
 
 // Vampire Creature Cards Array
 var vampireURL = 'https://api.deckbrew.com/mtg/cards?name=vampire&type=creature';
@@ -104,7 +115,7 @@ vampireCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		vampireDeck.push(deck);
-		// $('.vampireDeck').append(decktype.decklist(deck));
+		// $('#vampireDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(vampireDeck);
@@ -120,26 +131,10 @@ wolfCardRequest.then(function (response) {
 
 		var deck = new _card2['default'](card);
 		wolfDeck.push(deck);
-		// $('.wolfDeck').append(decktype.decklist(deck));
+		// $('#wolfDeck').append(decktype.decklist(deck));
 	});
 
 	console.log(wolfDeck);
-});
-
-// Golem Creature Cards Array
-var golemURL = 'https://api.deckbrew.com/mtg/cards?name=golem&type=creature';
-var golemDeck = [];
-var golemCardRequest = _jquery2['default'].getJSON(golemURL);
-
-golemCardRequest.then(function (response) {
-	_underscore2['default'].each(response, function (card) {
-
-		var deck = new _card2['default'](card);
-		golemDeck.push(deck);
-		// $('.golemDeck').append(decktype.decklist(deck));
-	});
-
-	console.log(golemDeck);
 });
 
 // // Good Guy Instance
@@ -183,7 +178,7 @@ golemCardRequest.then(function (response) {
 //   console.log(Jace);
 // });
 
-},{"./card":1,"./decktype":2,"./enemy":3,"./planeswalker":5,"jquery":6,"underscore":7}],5:[function(require,module,exports){
+},{"./card":1,"./enemy":2,"./planeswalker":4,"jquery":5,"underscore":6}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -202,7 +197,7 @@ var Planeswalker = function Planeswalker() {
 exports["default"] = Planeswalker;
 module.exports = exports["default"];
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9414,7 +9409,7 @@ return jQuery;
 
 }));
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -10964,7 +10959,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[4])
+},{}]},{},[3])
 
 
 //# sourceMappingURL=main.js.map
