@@ -84,11 +84,12 @@ function drawZombieCard() {
 	var currentZombieCard = drawRandomZombie();
 	if (currentZombieCard) {
 		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('#zombieDeck').append(currentZombieCard.toString());
+		(0, _jquery2['default'])('.player1Card').append(currentZombieCard.toString());
 	};
 };
 (0, _jquery2['default'])('#btnDrawZombie').on('click', function () {
 	drawZombieCard();
+	console.log('click');
 });
 
 //-----------------------//
@@ -117,11 +118,12 @@ function drawVampireCard() {
 	var currentVampireCard = drawRandomVampire();
 	if (currentVampireCard) {
 		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('#vampireDeck').append(currentVampireCard.toString());
+		(0, _jquery2['default'])('.player1Card').append(currentVampireCard.toString());
 	}
 };
 (0, _jquery2['default'])('#btnDrawVampire').on('click', function () {
 	drawVampireCard();
+	console.log('click');
 });
 
 //-----------------------//
@@ -150,11 +152,12 @@ function drawWolfCard() {
 	var currentWolfCard = drawRandomWolf();
 	if (currentWolfCard) {
 		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('#wolfDeck').append(currentWolfCard.toString());
+		(0, _jquery2['default'])('.player1Card').append(currentWolfCard.toString());
 	}
 };
 (0, _jquery2['default'])('#btnDrawWolf').on('click', function () {
 	drawWolfCard();
+	console.log('click');
 });
 
 //-----------------------//

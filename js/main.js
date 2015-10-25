@@ -28,11 +28,12 @@ function drawZombieCard () {
 		var currentZombieCard = drawRandomZombie();
 		if (currentZombieCard) {
 			$('.magicCard').remove();
-			$('#zombieDeck').append(currentZombieCard.toString());
+			$('.player1Card').append(currentZombieCard.toString());
 	};
 };
 $('#btnDrawZombie').on('click', function (){
 	drawZombieCard();
+	console.log('click');
 });
 
 //-----------------------//
@@ -61,11 +62,12 @@ function drawVampireCard () {
 		var currentVampireCard = drawRandomVampire();
 		if (currentVampireCard) {
 			$('.magicCard').remove();
-			$('#vampireDeck').append(currentVampireCard.toString());
+			$('.player1Card').append(currentVampireCard.toString());
 	}
 };
 $('#btnDrawVampire').on('click', function (){
 	drawVampireCard();
+	console.log('click');
 });
 
 //-----------------------//
@@ -94,11 +96,12 @@ function drawWolfCard () {
 		var currentWolfCard = drawRandomWolf();
 		if (currentWolfCard) {
 			$('.magicCard').remove();
-			$('#wolfDeck').append(currentWolfCard.toString());
+			$('.player1Card').append(currentWolfCard.toString());
 	}
 };
 $('#btnDrawWolf').on('click', function (){
 	drawWolfCard();
+	console.log('click');
 });
 
 //-----------------------//
