@@ -159,6 +159,23 @@ function drawWolfCard() {
 
 //-----------------------//
 
+// Deck loader
+
+(0, _jquery2['default'])('#zombieDeck').on('click', function (event) {
+	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
+	(0, _jquery2['default'])('#zombieScreen').removeClass('hidden').addClass('shown');
+});
+
+(0, _jquery2['default'])('#vampireDeck').on('click', function (event) {
+	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
+	(0, _jquery2['default'])('#vampireScreen').removeClass('hidden').addClass('shown');
+});
+
+(0, _jquery2['default'])('#wolfDeck').on('click', function (event) {
+	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
+	(0, _jquery2['default'])('#wolfScreen').removeClass('hidden').addClass('shown');
+});
+
 // // Good Guy Instance
 // let Gideon = new Planeswalker();
 

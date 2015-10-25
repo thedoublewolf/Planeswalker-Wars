@@ -5,16 +5,43 @@ body {
   background: #000000;
 }
 
-.container {
-	margin: 20px auto;
+#deckScreen {
+	margin: 50px auto;
 	width: 1000px;
 	text-align: center;
+}
+#zombieScreen {
+	margin: 50px auto;
+	width: 1200px;
+	height: 800px;
+	background-image: url(../images/waterygrave.jpg);
+	position: relative;
+}
+#vampireScreen {
+	margin: 50px auto;
+	width: 1200px;
+	height: 800px;
+	background-image: url(../images/overgrowntomb.jpg);
+	position: relative;
+}
+#wolfScreen {
+	margin: 50px auto;
+	width: 1200px;
+	height: 800px;
+	background-image: url(../images/polluteddelta.jpg);
+	position: relative;
+}
+.shown {
+
+}
+.hidden {
+	display: none;
 }
 
 .chooseHeader {
 	width: 1000px;
 	height: 200px;
-	background-image: url(/images/chooseyourdeck.jpg);
+	background-image: url(../images/chooseyourdeck.jpg);
 	display: block;
 	margin-bottom: 20px;
 	text-align: center;
@@ -25,10 +52,12 @@ body {
 	width: 300px;
 	height: 450px;
 	margin: 10px 15px 10px 15px;
+	border-radius: 10px;
 }
 
 #zombieDeck {
 	background-image: url(../images/zombie.jpg);
+	cursor: crosshair;
 }
 #zombieDeck:hover {
 	background-image: url(../images/zombiehover.jpg);
@@ -37,6 +66,7 @@ body {
 
 #vampireDeck {
 	background-image: url(../images/vampire.jpg);
+	cursor: crosshair;
 }
 #vampireDeck:hover {
 	background-image: url(../images/vampirehover.jpg);
@@ -45,8 +75,105 @@ body {
 
 #wolfDeck {
 	background-image: url(../images/wolf.jpg);
+	cursor: crosshair;
 }
 #wolfDeck:hover {
 	background-image: url(../images/wolfhover.jpg);
 	box-shadow: 0px 0px 30px white;
 }
+
+.player1Box {
+	width: 385px;
+	height: 250px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+}
+
+.player1 {
+	border-radius: 5px;
+	width: 150px;
+	position: absolute;
+	bottom: 12px;
+	left: 12px;
+}
+
+.player2Box {
+	width: 385px;
+	height: 250px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: black;
+}
+
+.player2 {
+	border-radius: 5px;
+	width: 150px;
+	position: absolute;
+	bottom: 12px;
+	right: 12px;
+}
+
+.drawButton1 {
+	width: 200px;
+	height: 100px;
+	border: 1px solid white;
+	border-radius: 10px;
+	background-image: url(../images/drawwhite.jpg);
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
+.drawButton1:hover {
+	cursor: crosshair;
+	background-image: url(../images/drawbutton.jpg);
+	border: 1px solid red;
+	box-shadow: 0 0 10px red;
+	width: 202px;
+	height: 102px;
+	top: 10px;
+	right: 10px;
+}
+.drawButton2 {
+	width: 200px;
+	height: 100px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	background-image: url(../images/drawwhite.jpg);
+	position: absolute;
+	top: 12px;
+	left: 12px;
+}
+.drawButton2:hover {
+	cursor: crosshair;
+	background-image: url(../images/drawbutton.jpg);
+	border: 1px solid red;
+	box-shadow: 0 0 10px red;
+	width: 202px;
+	height: 102px;
+	top: 10px;
+	left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

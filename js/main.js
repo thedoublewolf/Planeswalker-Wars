@@ -103,9 +103,22 @@ $('#btnDrawWolf').on('click', function (){
 
 //-----------------------//
 
+// Deck loader
 
+$('#zombieDeck').on('click', function (event){
+	$('#deckScreen').removeClass('shown').addClass('hidden');
+	$('#zombieScreen').removeClass('hidden').addClass('shown');
+});
 
+$('#vampireDeck').on('click', function (event){
+	$('#deckScreen').removeClass('shown').addClass('hidden');
+	$('#vampireScreen').removeClass('hidden').addClass('shown');
+});
 
+$('#wolfDeck').on('click', function (event){
+	$('#deckScreen').removeClass('shown').addClass('hidden');
+	$('#wolfScreen').removeClass('hidden').addClass('shown');
+});
 
 
 
