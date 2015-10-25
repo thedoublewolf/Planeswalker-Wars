@@ -1,4 +1,4 @@
-let Card = function (stats) {
+let EnemyCard = function (stats) {
   stats = stats || {};
   this.editions = stats.editions[0].image_url;
   this.name = stats.name;
@@ -6,10 +6,10 @@ let Card = function (stats) {
   this.toughness = stats.toughness;  
 };
 
-Card.prototype.cardInstance = function () {
+EnemyCard.prototype.cardInstance = function () {
 	return `
-			<img class="magicCard1" src="${this.editions}">
+			<img class="magicCard2" src="${this.editions}">
 			`;
 };
 
-export default Card;
+export default EnemyCard;

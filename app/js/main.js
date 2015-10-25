@@ -12,8 +12,8 @@ var Card = function Card(stats) {
   this.toughness = stats.toughness;
 };
 
-Card.prototype.toString = function () {
-  return "\n\t\t\t<img class=\"magicCard\" src=\"" + this.editions + "\">\n\t\t\t";
+Card.prototype.cardInstance = function () {
+  return "\n\t\t\t<img class=\"magicCard1\" src=\"" + this.editions + "\">\n\t\t\t";
 };
 
 exports["default"] = Card;
@@ -25,17 +25,19 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var Enemy = function Enemy() {
-  this.health = 40;
-  this.cards = function () {};
-  this.hit = function (num) {
-    var hitPoints = num || 10;
-    return this.health = this.health - hitPoints;
-  };
+var EnemyCard = function EnemyCard(stats) {
+  stats = stats || {};
+  this.editions = stats.editions[0].image_url;
+  this.name = stats.name;
+  this.power = stats.power;
+  this.toughness = stats.toughness;
 };
 
-exports["default"] = Enemy;
+EnemyCard.prototype.cardInstance = function () {
+  return "\n\t\t\t<img class=\"magicCard2\" src=\"" + this.editions + "\">\n\t\t\t";
+};
+
+exports["default"] = EnemyCard;
 module.exports = exports["default"];
 
 },{}],3:[function(require,module,exports){
@@ -55,9 +57,9 @@ var _card = require('./card');
 
 var _card2 = _interopRequireDefault(_card);
 
-var _enemy = require('./enemy');
+var _enemycard = require('./enemycard');
 
-var _enemy2 = _interopRequireDefault(_enemy);
+var _enemycard2 = _interopRequireDefault(_enemycard);
 
 // Zombie Creature Cards Array
 var zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
@@ -70,26 +72,47 @@ zombieCardRequest.then(function (response) {
 		var deck = new _card2['default'](card);
 		zombieDeck.push(deck);
 	});
-
-	console.log(zombieDeck);
 });
 
-// Draw cards from Zombie deck
+// Enemy Vampire Cards Array
+var enemyVampireURL = 'https://api.deckbrew.com/mtg/cards?name=vampire&type=creature';
+var enemyVampireDeck = [];
+var enemyVampireCardRequest = _jquery2['default'].getJSON(enemyVampireURL);
+
+enemyVampireCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
+
+		var deck = new _enemycard2['default'](card);
+		enemyVampireDeck.push(deck);
+	});
+});
+
+// Draw cards from Zombie deck and Enemy Vampire deck
 
 function drawRandomZombie() {
 	return zombieDeck[Math.floor(Math.random() * zombieDeck.length)];
 };
-
 function drawZombieCard() {
 	var currentZombieCard = drawRandomZombie();
 	if (currentZombieCard) {
-		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('.player1Card').append(currentZombieCard.toString());
+		(0, _jquery2['default'])('.magicCard1').remove();
+		(0, _jquery2['default'])('.player1Card').append(currentZombieCard.cardInstance());
 	};
 };
+
+function drawRandomEnemyVampire() {
+	return enemyVampireDeck[Math.floor(Math.random() * enemyVampireDeck.length)];
+};
+function drawEnemyVampireCard() {
+	var currentEnemyVampireCard = drawRandomEnemyVampire();
+	if (currentEnemyVampireCard) {
+		(0, _jquery2['default'])('.magicCard2').remove();
+		(0, _jquery2['default'])('.player2Card').append(currentEnemyVampireCard.cardInstance());
+	};
+};
+
 (0, _jquery2['default'])('#btnDrawZombie').on('click', function () {
-	drawZombieCard();
-	console.log('click');
+	drawZombieCard(), drawEnemyVampireCard();
 });
 
 //-----------------------//
@@ -105,11 +128,22 @@ vampireCardRequest.then(function (response) {
 		var deck = new _card2['default'](card);
 		vampireDeck.push(deck);
 	});
-
-	console.log(vampireDeck);
 });
 
-// Draw cards from Vampire deck
+// Enemy Wolf Cards Array
+var enemyWolfURL = 'https://api.deckbrew.com/mtg/cards?name=wolf&type=creature';
+var enemyWolfDeck = [];
+var enemyWolfCardRequest = _jquery2['default'].getJSON(enemyWolfURL);
+
+enemyWolfCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
+
+		var deck = new _enemycard2['default'](card);
+		enemyWolfDeck.push(deck);
+	});
+});
+
+// Draw cards from Vampire deck and Enemy Wolf deck
 
 function drawRandomVampire() {
 	return vampireDeck[Math.floor(Math.random() * vampireDeck.length)];
@@ -117,13 +151,24 @@ function drawRandomVampire() {
 function drawVampireCard() {
 	var currentVampireCard = drawRandomVampire();
 	if (currentVampireCard) {
-		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('.player1Card').append(currentVampireCard.toString());
-	}
+		(0, _jquery2['default'])('.magicCard1').remove();
+		(0, _jquery2['default'])('.player1Card').append(currentVampireCard.cardInstance());
+	};
 };
+
+function drawRandomEnemyWolf() {
+	return enemyWolfDeck[Math.floor(Math.random() * enemyWolfDeck.length)];
+};
+function drawEnemyWolfCard() {
+	var currentEnemyWolfCard = drawRandomEnemyWolf();
+	if (currentEnemyWolfCard) {
+		(0, _jquery2['default'])('.magicCard2').remove();
+		(0, _jquery2['default'])('.player2Card').append(currentEnemyWolfCard.cardInstance());
+	};
+};
+
 (0, _jquery2['default'])('#btnDrawVampire').on('click', function () {
-	drawVampireCard();
-	console.log('click');
+	drawVampireCard(), drawEnemyWolfCard();
 });
 
 //-----------------------//
@@ -139,11 +184,22 @@ wolfCardRequest.then(function (response) {
 		var deck = new _card2['default'](card);
 		wolfDeck.push(deck);
 	});
-
-	console.log(wolfDeck);
 });
 
-// Draw cards from Wolf deck
+// Enemy Zombie Cards Array
+var enemyZombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
+var enemyZombieDeck = [];
+var enemyZombieCardRequest = _jquery2['default'].getJSON(zombieURL);
+
+enemyZombieCardRequest.then(function (response) {
+	_underscore2['default'].each(response, function (card) {
+
+		var deck = new _enemycard2['default'](card);
+		enemyZombieDeck.push(deck);
+	});
+});
+
+// Draw cards from Wolf deck and Enemy Zombie deck
 
 function drawRandomWolf() {
 	return wolfDeck[Math.floor(Math.random() * wolfDeck.length)];
@@ -151,13 +207,24 @@ function drawRandomWolf() {
 function drawWolfCard() {
 	var currentWolfCard = drawRandomWolf();
 	if (currentWolfCard) {
-		(0, _jquery2['default'])('.magicCard').remove();
-		(0, _jquery2['default'])('.player1Card').append(currentWolfCard.toString());
+		(0, _jquery2['default'])('.magicCard1').remove();
+		(0, _jquery2['default'])('.player1Card').append(currentWolfCard.cardInstance());
 	}
 };
+
+function drawRandomEnemyZombie() {
+	return enemyZombieDeck[Math.floor(Math.random() * enemyZombieDeck.length)];
+};
+function drawEnemyZombieCard() {
+	var currentEnemyZombieCard = drawRandomEnemyZombie();
+	if (currentEnemyZombieCard) {
+		(0, _jquery2['default'])('.magicCard2').remove();
+		(0, _jquery2['default'])('.player2Card').append(currentEnemyZombieCard.cardInstance());
+	};
+};
+
 (0, _jquery2['default'])('#btnDrawWolf').on('click', function () {
-	drawWolfCard();
-	console.log('click');
+	drawWolfCard(), drawEnemyZombieCard();
 });
 
 //-----------------------//
@@ -220,7 +287,7 @@ function drawWolfCard() {
 //   console.log(Jace);
 // });
 
-},{"./card":1,"./enemy":2,"jquery":4,"underscore":5}],4:[function(require,module,exports){
+},{"./card":1,"./enemycard":2,"jquery":4,"underscore":5}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/

@@ -82,6 +82,15 @@ body {
 	box-shadow: 0px 0px 30px white;
 }
 
+.magicCard1 {
+	width: 250px;
+	border-radius: 12px;
+}
+.magicCard2 {
+	width: 250px;
+	border-radius: 12px;
+}
+
 .playField {
 	width: 800px;
 	height: 500px;
@@ -94,22 +103,24 @@ body {
 }
 
 .player1Card {
-	width: 200px;
-	height: 300px;
+	width: 250px;
+	height: 349px;
 	border: 1px solid grey;
 	border-radius: 5px;
 	position: absolute;
 	left: 100px;
-	top: 100px;
+	top: 75px;
+	// background-color: white;
 }
 .player2Card {
-	width: 200px;
-	height: 300px;
+	width: 250px;
+	height: 349px;
 	border: 1px solid grey;
 	border-radius: 5px;
 	position: absolute;
 	right: 100px;
-	top: 100px;
+	top: 75px;
+	// background-color: white;
 }
 
 .player1Box {
@@ -118,8 +129,8 @@ body {
 	border: 1px solid grey;
 	border-radius: 5px;
 	position: absolute;
-	bottom: 0;
-	left: 0;
+	bottom: 12px;
+	left: 100px;
 	background-color: black;
 }
 
@@ -137,8 +148,8 @@ body {
 	border: 1px solid grey;
 	border-radius: 5px;
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 12px;
+	right: 100px;
 	background-color: black;
 }
 
@@ -157,8 +168,8 @@ body {
 	border-radius: 10px;
 	background-image: url(../images/drawwhite.jpg);
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	bottom: 32px;
+	right: 500px;
 }
 .drawButton1:hover {
 	cursor: crosshair;
@@ -167,28 +178,17 @@ body {
 	box-shadow: 0 0 10px red;
 	width: 202px;
 	height: 102px;
-	top: 10px;
-	right: 10px;
+	bottom:	30px;
+	right: 498px;
 }
-.drawButton2 {
+.versus {
 	width: 200px;
-	height: 100px;
-	border: 1px solid grey;
-	border-radius: 10px;
-	background-image: url(../images/drawwhite.jpg);
+	height: 180px;
+	background-image: url(../images/versus.png);
 	position: absolute;
-	top: 12px;
-	left: 12px;
-}
-.drawButton2:hover {
-	cursor: crosshair;
-	background-image: url(../images/drawbutton.jpg);
-	border: 1px solid red;
-	box-shadow: 0 0 10px red;
-	width: 202px;
-	height: 102px;
-	top: 10px;
-	left: 10px;
+	bottom: 120px;
+	right: 500px;
+	opacity: 0.3;
 }
 
 
