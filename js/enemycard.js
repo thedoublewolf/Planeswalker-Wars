@@ -3,7 +3,7 @@ let EnemyCard = function (stats) {
   this.editions = stats.editions[0].image_url;
   this.name = stats.name;
   this.power = stats.power;
-  this.toughness = stats.toughness;  
+  this.toughness = stats.toughness;
 };
 
 EnemyCard.prototype.cardInstance = function () {

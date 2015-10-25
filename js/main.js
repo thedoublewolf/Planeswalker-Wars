@@ -2,6 +2,8 @@ import $ from 'jquery';
 import _ from 'underscore';
 import Card from './card';
 import EnemyCard from './enemycard';
+import Player from './player';
+import Enemy from './enemy';
 
 //-----------------------//
 
@@ -32,7 +34,6 @@ enemyVampireCardRequest.then( function (response) {
 });
 
 // Draw cards from Zombie deck and Enemy Vampire deck
-
 function drawRandomZombie () {
 	return zombieDeck[ Math.floor(Math.random() * zombieDeck.length) ];
 };
@@ -54,6 +55,17 @@ function drawEnemyVampireCard () {
 		$('.player2Card').append(currentEnemyVampireCard.cardInstance());
 	};
 };
+
+// DOM Nodes Selected
+let playerHealth = $('.playerHealth');
+let enemyHealth = $('.enemyHealth');
+
+let playerAttack = $('#btnDrawZombie');
+
+// Show current (default) health
+playerHealth.text(zombieDeck.health);
+enemyHealth.text(enemyVampireDeck.health);
+console.log(playerHealth);
 
 $('#btnDrawZombie').on('click', function (){
 	drawZombieCard(),
@@ -89,7 +101,6 @@ enemyWolfCardRequest.then( function (response) {
 });
 
 // Draw cards from Vampire deck and Enemy Wolf deck
-
 function drawRandomVampire () {
 	return vampireDeck[ Math.floor(Math.random() * vampireDeck.length) ];
 };
@@ -146,7 +157,6 @@ enemyZombieCardRequest.then( function (response) {
 });
 
 // Draw cards from Wolf deck and Enemy Zombie deck
-
 function drawRandomWolf () {
 	return wolfDeck[ Math.floor(Math.random() * wolfDeck.length) ];
 };
@@ -177,7 +187,6 @@ $('#btnDrawWolf').on('click', function (){
 //-----------------------//
 
 // Deck loader
-
 $('#zombieDeck').on('click', function (event){
 	$('#deckScreen').removeClass('shown').addClass('hidden');
 	$('#zombieScreen').removeClass('hidden').addClass('shown');
@@ -202,48 +211,20 @@ $('#wolfDeck').on('click', function (event){
 
 
 
-// // Good Guy Instance
-// let Gideon = new Planeswalker();
-
-// // Bad Guy Instance
-// let Jace = new Enemy();
 
 
-// // DOM Nodes Selected
-// let ggHealth = $('.ggHealth');
-// let bgHealth = $('.bgHealth');
-
-// let ggAttack = $('.ggAttack');
-
-// // Show current (default) health
-// ggHealth.text(Gideon.health);
-// bgHealth.text(Jace.health);
 
 
-// // Setting up ON Events
-// ggAttack.on('click', function () {
 
-//   // Generate a random amount of hit points
-//   // Then attack!!!
-//   let num = _.random(0, 25);
-//   Jace.hit(num);
 
-//   if (Jace.health <= 0) {
-//     bgHealth.text('Defeated');
-//     alert('Mario Wins!!')
-//   } else {
-//     bgHealth.text(Jace.health);
-//     alert('Bowser Fights Back!!!');
-//     Gideon.hit(10);
-//     ggHealth.css('color', 'red');
-//     ggHealth.text(Gideon.health);
-//     setTimeout( function () {
-//       ggHealth.css('color', 'black');
-//     }, 1000);
-//   }
 
-//   console.log(Jace);
-// });
+
+
+
+
+
+
+
 
 
 

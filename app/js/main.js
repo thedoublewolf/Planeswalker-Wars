@@ -23,6 +23,19 @@ module.exports = exports["default"];
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Enemy = function Enemy() {
+	this.health = 20;
+};
+
+exports["default"] = Enemy;
+module.exports = exports["default"];
+
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var EnemyCard = function EnemyCard(stats) {
@@ -40,7 +53,7 @@ EnemyCard.prototype.cardInstance = function () {
 exports["default"] = EnemyCard;
 module.exports = exports["default"];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -60,6 +73,14 @@ var _card2 = _interopRequireDefault(_card);
 var _enemycard = require('./enemycard');
 
 var _enemycard2 = _interopRequireDefault(_enemycard);
+
+var _player = require('./player');
+
+var _player2 = _interopRequireDefault(_player);
+
+var _enemy = require('./enemy');
+
+var _enemy2 = _interopRequireDefault(_enemy);
 
 //-----------------------//
 
@@ -90,7 +111,6 @@ enemyVampireCardRequest.then(function (response) {
 });
 
 // Draw cards from Zombie deck and Enemy Vampire deck
-
 function drawRandomZombie() {
 	return zombieDeck[Math.floor(Math.random() * zombieDeck.length)];
 };
@@ -112,6 +132,17 @@ function drawEnemyVampireCard() {
 		(0, _jquery2['default'])('.player2Card').append(currentEnemyVampireCard.cardInstance());
 	};
 };
+
+// DOM Nodes Selected
+var playerHealth = (0, _jquery2['default'])('.playerHealth');
+var enemyHealth = (0, _jquery2['default'])('.enemyHealth');
+
+var playerAttack = (0, _jquery2['default'])('#btnDrawZombie');
+
+// Show current (default) health
+playerHealth.text(zombieDeck.health);
+enemyHealth.text(enemyVampireDeck.health);
+console.log(playerHealth);
 
 (0, _jquery2['default'])('#btnDrawZombie').on('click', function () {
 	drawZombieCard(), drawEnemyVampireCard();
@@ -146,7 +177,6 @@ enemyWolfCardRequest.then(function (response) {
 });
 
 // Draw cards from Vampire deck and Enemy Wolf deck
-
 function drawRandomVampire() {
 	return vampireDeck[Math.floor(Math.random() * vampireDeck.length)];
 };
@@ -202,7 +232,6 @@ enemyZombieCardRequest.then(function (response) {
 });
 
 // Draw cards from Wolf deck and Enemy Zombie deck
-
 function drawRandomWolf() {
 	return wolfDeck[Math.floor(Math.random() * wolfDeck.length)];
 };
@@ -232,7 +261,6 @@ function drawEnemyZombieCard() {
 //-----------------------//
 
 // Deck loader
-
 (0, _jquery2['default'])('#zombieDeck').on('click', function (event) {
 	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
 	(0, _jquery2['default'])('#zombieScreen').removeClass('hidden').addClass('shown');
@@ -250,48 +278,20 @@ function drawEnemyZombieCard() {
 
 //-----------------------//
 
-// // Good Guy Instance
-// let Gideon = new Planeswalker();
+},{"./card":1,"./enemy":2,"./enemycard":3,"./player":5,"jquery":6,"underscore":7}],5:[function(require,module,exports){
+"use strict";
 
-// // Bad Guy Instance
-// let Jace = new Enemy();
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Player = function Player() {
+	this.health = 20;
+};
 
-// // DOM Nodes Selected
-// let ggHealth = $('.ggHealth');
-// let bgHealth = $('.bgHealth');
+exports["default"] = Player;
+module.exports = exports["default"];
 
-// let ggAttack = $('.ggAttack');
-
-// // Show current (default) health
-// ggHealth.text(Gideon.health);
-// bgHealth.text(Jace.health);
-
-// // Setting up ON Events
-// ggAttack.on('click', function () {
-
-//   // Generate a random amount of hit points
-//   // Then attack!!!
-//   let num = _.random(0, 25);
-//   Jace.hit(num);
-
-//   if (Jace.health <= 0) {
-//     bgHealth.text('Defeated');
-//     alert('Mario Wins!!')
-//   } else {
-//     bgHealth.text(Jace.health);
-//     alert('Bowser Fights Back!!!');
-//     Gideon.hit(10);
-//     ggHealth.css('color', 'red');
-//     ggHealth.text(Gideon.health);
-//     setTimeout( function () {
-//       ggHealth.css('color', 'black');
-//     }, 1000);
-//   }
-
-//   console.log(Jace);
-// });
-
-},{"./card":1,"./enemycard":2,"jquery":4,"underscore":5}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9503,7 +9503,7 @@ return jQuery;
 
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -11053,7 +11053,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[3])
+},{}]},{},[4])
 
 
 //# sourceMappingURL=main.js.map
