@@ -61,6 +61,8 @@ var _enemycard = require('./enemycard');
 
 var _enemycard2 = _interopRequireDefault(_enemycard);
 
+//-----------------------//
+
 // Zombie Creature Cards Array
 var zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
 var zombieDeck = [];
@@ -245,6 +247,8 @@ function drawEnemyZombieCard() {
 	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
 	(0, _jquery2['default'])('#wolfScreen').removeClass('hidden').addClass('shown');
 });
+
+//-----------------------//
 
 // // Good Guy Instance
 // let Gideon = new Planeswalker();

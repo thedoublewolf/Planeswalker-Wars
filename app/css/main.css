@@ -2073,6 +2073,10 @@ body {
   background-image: url(../images/zombiehover.jpg);
   box-shadow: 0px 0px 30px white; }
 
+#zombieDeck:active {
+  background-image: url(../images/zombie.jpg);
+  box-shadow: 0px 0px 50px red; }
+
 #vampireDeck {
   background-image: url(../images/vampire.jpg);
   cursor: crosshair; }
@@ -2081,6 +2085,10 @@ body {
   background-image: url(../images/vampirehover.jpg);
   box-shadow: 0px 0px 30px white; }
 
+#vampireDeck:active {
+  background-image: url(../images/vampire.jpg);
+  box-shadow: 0px 0px 50px red; }
+
 #wolfDeck {
   background-image: url(../images/wolf.jpg);
   cursor: crosshair; }
@@ -2088,6 +2096,10 @@ body {
 #wolfDeck:hover {
   background-image: url(../images/wolfhover.jpg);
   box-shadow: 0px 0px 30px white; }
+
+#wolfDeck:active {
+  background-image: url(../images/wolf.jpg);
+  box-shadow: 0px 0px 50px red; }
 
 .magicCard1 {
   width: 250px;
@@ -2106,6 +2118,14 @@ body {
   right: 200px;
   left: 200px;
   border-radius: 5px; }
+
+.versus {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-image: url(../images/versus.png);
+  right: 350px;
+  top: 200px; }
 
 .player1Card {
   width: 250px;
@@ -2126,13 +2146,13 @@ body {
   top: 75px; }
 
 .player1Box {
-  width: 385px;
+  width: 290px;
   height: 250px;
   border: 1px solid grey;
   border-radius: 5px;
   position: absolute;
   bottom: 12px;
-  left: 100px;
+  left: 200px;
   background-color: black; }
 
 .player1 {
@@ -2143,13 +2163,13 @@ body {
   left: 12px; }
 
 .player2Box {
-  width: 385px;
+  width: 290px;
   height: 250px;
   border: 1px solid grey;
   border-radius: 5px;
   position: absolute;
   bottom: 12px;
-  right: 100px;
+  right: 200px;
   background-color: black; }
 
 .player2 {
@@ -2160,32 +2180,94 @@ body {
   right: 12px; }
 
 .drawButton1 {
-  width: 200px;
-  height: 100px;
+  width: 180px;
+  height: 230px;
   border: 1px solid white;
   border-radius: 10px;
   background-image: url(../images/drawwhite.jpg);
   position: absolute;
-  bottom: 32px;
-  right: 500px; }
+  bottom: 22px;
+  right: 509px; }
 
 .drawButton1:hover {
   cursor: crosshair;
   background-image: url(../images/drawbutton.jpg);
   border: 1px solid red;
   box-shadow: 0 0 10px red;
-  width: 202px;
-  height: 102px;
-  bottom: 30px;
-  right: 498px; }
+  width: 182px;
+  height: 232px;
+  bottom: 20px;
+  right: 507px; }
 
-.versus {
-  width: 200px;
-  height: 180px;
-  background-image: url(../images/versus.png);
+.drawButton1:active {
+  background-image: url(../images/drawwhite.jpg);
+  border: 1px solid white;
+  box-shadow: 0 0 50px white; }
+
+.hitpoints1 {
+  width: 95px;
+  height: 60px;
+  border: 1px solid grey;
   position: absolute;
-  bottom: 120px;
-  right: 500px;
-  opacity: 0.3; }
+  right: 12px;
+  top: 12px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .hitpoints1 p {
+    margin: 0;
+    color: white;
+    font-size: 2.2em; }
+  .hitpoints1 .hp {
+    opacity: 0.5;
+    font-size: 1.2em; }
+  .hitpoints1 .slash {
+    opacity: 0.3; }
+
+.hitpoints2 {
+  width: 95px;
+  height: 60px;
+  border: 1px solid grey;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .hitpoints2 p {
+    margin: 0;
+    color: white;
+    font-size: 2.2em; }
+  .hitpoints2 .hp {
+    opacity: 0.5;
+    font-size: 1.2em; }
+  .hitpoints2 .slash {
+    opacity: 0.3; }
+
+.hitbox1 {
+  width: 95px;
+  height: 128px;
+  border: 1px solid #2D1315;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.hitbox2 {
+  width: 95px;
+  height: 128px;
+  border: 1px solid #2D1315;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -3,6 +3,8 @@ import _ from 'underscore';
 import Card from './card';
 import EnemyCard from './enemycard';
 
+//-----------------------//
+
 // Zombie Creature Cards Array
 let zombieURL = 'https://api.deckbrew.com/mtg/cards?name=zombie&type=creature';
 let zombieDeck = [];
@@ -190,6 +192,8 @@ $('#wolfDeck').on('click', function (event){
 	$('#deckScreen').removeClass('shown').addClass('hidden');
 	$('#wolfScreen').removeClass('hidden').addClass('shown');
 });
+
+//-----------------------//
 
 
 
