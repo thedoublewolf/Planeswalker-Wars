@@ -170,9 +170,21 @@ enemyHealth.text(enemyVampire.health);
 	};
 	if (enemyVampire.health <= 0) {
 		enemyHealth.text('0');
+		(0, _jquery2['default'])('.winBox1').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawZombie').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 	if (zombie.health <= 0) {
 		playerHealth.text('0');
+		(0, _jquery2['default'])('.winBox2').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawZombie').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 });
 
@@ -256,9 +268,21 @@ enemy2Health.text(enemyWolf.health);
 	};
 	if (enemyWolf.health <= 0) {
 		enemy2Health.text('0');
+		(0, _jquery2['default'])('.winBox1').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawVampire').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 	if (vampire.health <= 0) {
 		player2Health.text('0');
+		(0, _jquery2['default'])('.winBox2').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawVampire').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 });
 
@@ -342,15 +366,32 @@ enemy3Health.text(enemyZombie.health);
 	};
 	if (enemyZombie.health <= 0) {
 		enemy3Health.text('0');
+		(0, _jquery2['default'])('.winBox1').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawWolf').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 	if (wolf.health <= 0) {
 		player3Health.text('0');
+		(0, _jquery2['default'])('.winBox2').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('#btnDrawWolf').remove();
+		(0, _jquery2['default'])('.replay').removeClass('hidden').addClass('shown');
+		(0, _jquery2['default'])('.replay').on('click', function () {
+			document.location.reload(true);
+		});
 	};
 });
 
 //-----------------------//
 
 // Deck loader
+(0, _jquery2['default'])('.start').on('click', function (event) {
+	(0, _jquery2['default'])('#splash').removeClass('shown').addClass('hidden');
+	(0, _jquery2['default'])('#deckScreen').removeClass('hidden').addClass('shown');
+});
+
 (0, _jquery2['default'])('#zombieDeck').on('click', function (event) {
 	(0, _jquery2['default'])('#deckScreen').removeClass('shown').addClass('hidden');
 	(0, _jquery2['default'])('#zombieScreen').removeClass('hidden').addClass('shown');

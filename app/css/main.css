@@ -2021,6 +2021,37 @@
 body {
   background: #000000; }
 
+#splash {
+  margin: 50px auto;
+  width: 1200px;
+  height: 800px;
+  background-image: url(../images/splash.jpg);
+  position: relative; }
+
+.start {
+  width: 200px;
+  height: 100px;
+  border: 1px solid grey;
+  position: absolute;
+  bottom: 15px;
+  left: 500px;
+  background-image: url(../images/play.png);
+  border-radius: 10px; }
+
+.start:hover {
+  width: 202px;
+  height: 102px;
+  bottom: 13px;
+  left: 498px;
+  box-shadow: 0 0 20px white; }
+
+.start:active {
+  width: 200px;
+  height: 100px;
+  bottom: 15px;
+  left: 500px;
+  box-shadow: 0 0 10px white; }
+
 #deckScreen {
   margin: 50px auto;
   width: 1000px;
@@ -2046,6 +2077,71 @@ body {
   height: 800px;
   background-image: url(../images/polluteddelta.jpg);
   position: relative; }
+
+#winScreen {
+  margin: 50px auto;
+  width: 1000px;
+  height: 800px;
+  background-color: black;
+  text-align: center; }
+  #winScreen h1 {
+    margin: 200px auto;
+    font-size: 5em;
+    color: white; }
+
+#loseScreen {
+  margin: 50px auto;
+  width: 1000px;
+  height: 800px;
+  background-color: black;
+  opacity: 0.5;
+  text-align: center; }
+  #loseScreen h1 {
+    margin: 200px auto;
+    font-size: 5em;
+    color: red; }
+
+.winBox1 {
+  width: 95px;
+  height: 128px;
+  border: 1px solid #2D1315;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 5px;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center; }
+  .winBox1 p {
+    color: red;
+    margin: 0;
+    margin-top: 35px; }
+  .winBox1 h1 {
+    color: red;
+    margin: 0; }
+
+.winBox2 {
+  width: 95px;
+  height: 128px;
+  border: 1px solid #2D1315;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  border-radius: 5px;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center; }
+  .winBox2 p {
+    color: red;
+    margin: 0;
+    margin-top: 35px; }
+  .winBox2 h1 {
+    color: red;
+    margin: 0; }
 
 .hidden {
   display: none; }
@@ -2204,11 +2300,25 @@ body {
   border: 1px solid white;
   box-shadow: 0 0 50px white; }
 
-.hpbox1 {
-  color: red; }
+.replay {
+  width: 180px;
+  height: 230px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-image: url(../images/replay.jpg);
+  position: absolute;
+  bottom: 22px;
+  right: 509px; }
 
-.hpbox2 {
-  color: red; }
+.replay:hover {
+  cursor: crosshair;
+  background-image: url(../images/replay.jpg);
+  border: 1px solid white;
+  box-shadow: 0 0 10px white;
+  width: 182px;
+  height: 232px;
+  bottom: 20px;
+  right: 507px; }
 
 .hitpoints1 {
   width: 95px;

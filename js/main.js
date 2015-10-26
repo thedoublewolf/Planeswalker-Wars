@@ -90,9 +90,21 @@ $('#btnDrawZombie').on('click', function (){
 	};
 	if (enemyVampire.health <= 0) {
 		enemyHealth.text('0');
+		$('.winBox1').removeClass('hidden').addClass('shown');
+		$('#btnDrawZombie').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 	if (zombie.health <= 0) {
 		playerHealth.text('0');
+		$('.winBox2').removeClass('hidden').addClass('shown');
+		$('#btnDrawZombie').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 });
 
@@ -177,9 +189,21 @@ $('#btnDrawVampire').on('click', function (){
 	};
 	if (enemyWolf.health <= 0) {
 		enemy2Health.text('0');
+		$('.winBox1').removeClass('hidden').addClass('shown');
+		$('#btnDrawVampire').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 	if (vampire.health <= 0) {
 		player2Health.text('0');
+		$('.winBox2').removeClass('hidden').addClass('shown');
+		$('#btnDrawVampire').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 });
 
@@ -264,15 +288,32 @@ $('#btnDrawWolf').on('click', function (){
 	};
 	if (enemyZombie.health <= 0) {
 		enemy3Health.text('0');
+		$('.winBox1').removeClass('hidden').addClass('shown');
+		$('#btnDrawWolf').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 	if (wolf.health <= 0) {
 		player3Health.text('0');
+		$('.winBox2').removeClass('hidden').addClass('shown');
+		$('#btnDrawWolf').remove();
+		$('.replay').removeClass('hidden').addClass('shown');
+		$('.replay').on('click', function (){
+			document.location.reload(true);
+		})
 	};
 });
 
 //-----------------------//
 
 // Deck loader
+$('.start').on('click', function (event){
+	$('#splash').removeClass('shown').addClass('hidden');
+	$('#deckScreen').removeClass('hidden').addClass('shown');
+})
+
 $('#zombieDeck').on('click', function (event){
 	$('#deckScreen').removeClass('shown').addClass('hidden');
 	$('#zombieScreen').removeClass('hidden').addClass('shown');
@@ -289,33 +330,3 @@ $('#wolfDeck').on('click', function (event){
 });
 
 //-----------------------//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,7 +7,11 @@
 </head>
 <body>
 
-<div id="deckScreen" class="shown">
+<div id="splash" class="shown">
+	<div class="start"></div>
+</div>
+
+<div id="deckScreen" class="hidden">
   <div class="chooseHeader">
   </div>
 
@@ -34,13 +38,14 @@
 			<p class="hp">HP:</p>
 			<p><span class="playerHealth"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox1">
-			<p>Damage:</p>
-			<div class="hitbox1text"></div>
-		</div> -->
+		<div class="winBox1 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 
 	<div id="btnDrawZombie" class="drawButton1"></div>
+	<div class="replay hidden"></div>
 
 	<div class="player2Box">
 		<img src="images/vampire.jpg" class="player2">
@@ -48,10 +53,10 @@
 			<p class="hp">HP:</p>
 			<p><span class="enemyHealth"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox2">
-			<p>Damage:</p>
-			<div class="hitbox2text"></div>
-		</div> -->
+		<div class="winBox2 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 </div>
 
@@ -67,11 +72,14 @@
 			<p class="hp">HP:</p>
 			<p><span class="player2Health"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox1">
-		</div> -->
+		<div class="winBox1 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 
 	<div id="btnDrawVampire" class="drawButton1"></div>
+	<div class="replay hidden"></div>
 
 	<div class="player2Box">
 		<img src="images/wolf.jpg" class="player2">
@@ -79,8 +87,10 @@
 			<p class="hp">HP:</p>
 			<p><span class="enemy2Health"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox2">
-		</div> -->
+		<div class="winBox2 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 </div>
 
@@ -96,11 +106,14 @@
 			<p class="hp">HP:</p>
 			<p><span class="player3Health"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox1">
-		</div> -->
+		<div class="winBox1 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 
 	<div id="btnDrawWolf" class="drawButton1"></div>
+	<div class="replay hidden"></div>
 
 	<div class="player2Box">
 		<img src="images/zombie.jpg" class="player2">
@@ -108,12 +121,19 @@
 			<p class="hp">HP:</p>
 			<p><span class="enemy3Health"></span><span class="slash">/</span>20</p>
 		</div>
-<!-- 		<div class="hitbox2">
-		</div> -->
+		<div class="winBox2 hidden">
+			<p>VICTORY!</p>
+			<h1><i class="fa fa-bolt"></i></h1>
+		</div>
 	</div>
 </div>
 
-
-  <script src="js/main.js"></script>
+<!-- <div id="winScreen" class="hidden">
+<h1>YOU WIN!</h1>
+</div>
+<div id="loseScreen" class="hidden">
+<h1>YOU LOSE!</h1>
+</div> -->
+<script src="js/main.js"></script>
 </body>
 </html>
