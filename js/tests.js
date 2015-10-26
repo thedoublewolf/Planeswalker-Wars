@@ -1,97 +1,83 @@
-// import Planeswalker from './planeswalker';
-// import Enemy from './enemy';
 import Card from './card';
+import EnemyCard from './enemycard';
+import Player from './player';
+import Enemy from './enemy';
 
 (function() {
   'use strict';
 
-//   describe('About the Planeswalker', function() {
+  describe('About the Player', function() {
 
-//     beforeEach( function() {
-//       window.x = new Planeswalker();
-//     });
+    beforeEach( function() {
+      window.x = new Player();
+    });
+    describe('creating a Player', function() {
+      it('should create an instance of Player', function () {
+        expect(x instanceof Player).to.equal(true);
+      });
+    });
+    describe('player health', function() {
+      it('should have full health upon creation', function() {
+        expect(x.health).to.equal(20);
+      });
+    });
+    describe('player hit points', function() {
+      it('should be able to take damage', function() {
+        x.hit();
+        expect(x.health).to.be.below(20);
+      });
+    });
 
-//     describe('creating a Planeswalker', function() {
-//       it('should create an instance of Planeswalker', function () {
-//         expect(x instanceof Planeswalker).to.equal(true);
-//       });
-//     });
+  });
 
-//     describe('my player health', function() {
-//       it('should have full health upon creation', function() {
-//         expect(x.health).to.equal(40);
-//       });
-//     });
+  describe('About the Player\'s Deck', function() {
 
-//     describe('player taking damage', function() {
-//       it('should lower the score, after getting hit', function() {
-//         x.hit();
-//         expect(x.health).to.be.below(40);
-//       });
-//     });
+    beforeEach( function() {
+      window.x = new Card();
+    });
+    describe('creating a Card', function() {
+      it('should create an instance of a Card', function () {
+        expect(x instanceof Card).to.equal(true);
+      });
+    });
 
-//     describe('player has cards', function() {
-//     	it('should have a unique deck of cards', function() {
+  });
 
-//     	});
-//     });
+  describe('About the Enemy', function() {
 
-//   });
+    beforeEach( function() {
+      window.x = new Enemy();
+    });
+    describe('creating an Enemy', function() {
+      it('should create an instance of Enemy', function () {
+        expect(x instanceof Enemy).to.equal(true);
+      });
+    });
+    describe('enemy health', function() {
+      it('should have full health upon creation', function() {
+        expect(x.health).to.equal(20);
+      });
+    });
+    describe('enemy hit points', function() {
+      it('should be able to take damage', function() {
+        x.hit(num2);
+        expect(x.health).to.be.below(20);
+      });
+    });
 
-//   describe('About the Enemy', function() {
+  });
 
-// 	  beforeEach( function() {
-// 	    window.x = new Enemy();
-// 	  });
+  describe('About the Enemy\'s Deck', function() {
 
-// 	  describe('creating an Enemy', function() {
-// 	    it('should create an instance of Enemy', function () {
-// 	      expect(x instanceof Enemy).to.equal(true);
-// 	    });
-// 	  });
-
-// 	  describe('enemy health', function() {
-// 	    it('should have full health upon creation', function() {
-// 	      expect(x.health).to.equal(40);
-// 	    });
-// 	  });
-
-// 	  describe('enemy taking damage', function() {
-// 	    it('should lower the score, after getting hit', function() {
-// 	      x.hit();
-// 	      expect(x.health).to.be.below(40);
-// 	    })
-// 	  });
-
-//     describe('player has cards', function() {
-//     	it('should have a unique deck of cards', function() {
-
-//     	});
-//     });
-
-// });
-
-  describe('About the Card', function() {
-
-  	beforeEach( function() {
-  		window.x = new Card();
-  	});
-
-  	describe('create a deck of cards', function() {
-  		it('should create an instance of a deck of cards', function () {
-  			expect(x instanceof Card).to.equal(true);
-  		});
-  	});
+    beforeEach( function() {
+      window.x = new EnemyCard();
+    });
+    describe('creating an Enemy Card', function() {
+      it('should create an instance of an Enemy Card', function () {
+        expect(x instanceof EnemyCard).to.equal(true);
+      });
+    });
 
   });
 
 }());
-
-
-// Planeswalker
-
-// Enemy
-
-// Both will have a unique deck of cards
-// Both will have attack methods
-// Both will have health
