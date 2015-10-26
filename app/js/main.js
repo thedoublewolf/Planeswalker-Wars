@@ -13,7 +13,7 @@ var Card = function Card(stats) {
 };
 
 Card.prototype.cardInstance = function () {
-  return "\n\t\t\t<img class=\"magicCard1\" src=\"" + this.editions + "\">\n\t\t\t";
+  return "\n\t\t<img class=\"magicCard1\" src=\"" + this.editions + "\">\n\t\t";
 };
 
 exports["default"] = Card;
@@ -27,6 +27,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Enemy = function Enemy() {
 	this.health = 20;
+	this.hit = function (num2) {
+		var hitPoints = num2;
+		return this.health = this.health - hitPoints;
+	};
 };
 
 exports["default"] = Enemy;
@@ -114,11 +118,16 @@ enemyVampireCardRequest.then(function (response) {
 function drawRandomZombie() {
 	return zombieDeck[Math.floor(Math.random() * zombieDeck.length)];
 };
+
 function drawZombieCard() {
 	var currentZombieCard = drawRandomZombie();
 	if (currentZombieCard) {
 		(0, _jquery2['default'])('.magicCard1').remove();
 		(0, _jquery2['default'])('.player1Card').append(currentZombieCard.cardInstance());
+
+		var num1 = currentZombieCard.power;
+		enemyVampire.hit(num1);
+		// $('.hitbox2text').append(num1);
 	};
 };
 
@@ -130,22 +139,41 @@ function drawEnemyVampireCard() {
 	if (currentEnemyVampireCard) {
 		(0, _jquery2['default'])('.magicCard2').remove();
 		(0, _jquery2['default'])('.player2Card').append(currentEnemyVampireCard.cardInstance());
+
+		var num2 = currentEnemyVampireCard.power;
+		zombie.hit(num2);
+		// $('.hitbox1text').append(num2);
 	};
 };
+
+// Player and Enemy Instances
+var zombie = new _player2['default']();
+var enemyVampire = new _enemy2['default']();
 
 // DOM Nodes Selected
 var playerHealth = (0, _jquery2['default'])('.playerHealth');
 var enemyHealth = (0, _jquery2['default'])('.enemyHealth');
 
-var playerAttack = (0, _jquery2['default'])('#btnDrawZombie');
+// Show current (default) health and hitpoints
+playerHealth.text(zombie.health);
+enemyHealth.text(enemyVampire.health);
 
-// Show current (default) health
-playerHealth.text(zombieDeck.health);
-enemyHealth.text(enemyVampireDeck.health);
-console.log(playerHealth);
-
+// Setting up ON Events
 (0, _jquery2['default'])('#btnDrawZombie').on('click', function () {
 	drawZombieCard(), drawEnemyVampireCard();
+
+	if (enemyVampire.health <= 20) {
+		enemyHealth.text(enemyVampire.health);
+	};
+	if (zombie.health <= 20) {
+		playerHealth.text(zombie.health);
+	};
+	if (enemyVampire.health <= 0) {
+		enemyHealth.text('0');
+	};
+	if (zombie.health <= 0) {
+		playerHealth.text('0');
+	};
 });
 
 //-----------------------//
@@ -185,6 +213,9 @@ function drawVampireCard() {
 	if (currentVampireCard) {
 		(0, _jquery2['default'])('.magicCard1').remove();
 		(0, _jquery2['default'])('.player1Card').append(currentVampireCard.cardInstance());
+
+		var num1 = currentVampireCard.power;
+		enemyWolf.hit(num1);
 	};
 };
 
@@ -196,11 +227,39 @@ function drawEnemyWolfCard() {
 	if (currentEnemyWolfCard) {
 		(0, _jquery2['default'])('.magicCard2').remove();
 		(0, _jquery2['default'])('.player2Card').append(currentEnemyWolfCard.cardInstance());
+
+		var num2 = currentEnemyWolfCard.power;
+		vampire.hit(num2);
 	};
 };
 
+// Player and Enemy Instances
+var vampire = new _player2['default']();
+var enemyWolf = new _enemy2['default']();
+
+// DOM Nodes Selected
+var player2Health = (0, _jquery2['default'])('.player2Health');
+var enemy2Health = (0, _jquery2['default'])('.enemy2Health');
+
+// Show current (default) health and hitpoints
+player2Health.text(vampire.health);
+enemy2Health.text(enemyWolf.health);
+
 (0, _jquery2['default'])('#btnDrawVampire').on('click', function () {
 	drawVampireCard(), drawEnemyWolfCard();
+
+	if (enemyWolf.health <= 20) {
+		enemy2Health.text(enemyWolf.health);
+	};
+	if (vampire.health <= 20) {
+		player2Health.text(vampire.health);
+	};
+	if (enemyWolf.health <= 0) {
+		enemy2Health.text('0');
+	};
+	if (vampire.health <= 0) {
+		player2Health.text('0');
+	};
 });
 
 //-----------------------//
@@ -240,7 +299,10 @@ function drawWolfCard() {
 	if (currentWolfCard) {
 		(0, _jquery2['default'])('.magicCard1').remove();
 		(0, _jquery2['default'])('.player1Card').append(currentWolfCard.cardInstance());
-	}
+
+		var num1 = currentWolfCard.power;
+		enemyZombie.hit(num1);
+	};
 };
 
 function drawRandomEnemyZombie() {
@@ -251,11 +313,39 @@ function drawEnemyZombieCard() {
 	if (currentEnemyZombieCard) {
 		(0, _jquery2['default'])('.magicCard2').remove();
 		(0, _jquery2['default'])('.player2Card').append(currentEnemyZombieCard.cardInstance());
+
+		var num2 = currentEnemyZombieCard.power;
+		wolf.hit(num2);
 	};
 };
 
+// Player and Enemy Instances
+var wolf = new _player2['default']();
+var enemyZombie = new _enemy2['default']();
+
+// DOM Nodes Selected
+var player3Health = (0, _jquery2['default'])('.player3Health');
+var enemy3Health = (0, _jquery2['default'])('.enemy3Health');
+
+// Show current (default) health and hitpoints
+player3Health.text(wolf.health);
+enemy3Health.text(enemyZombie.health);
+
 (0, _jquery2['default'])('#btnDrawWolf').on('click', function () {
 	drawWolfCard(), drawEnemyZombieCard();
+
+	if (enemyZombie.health <= 20) {
+		enemy3Health.text(enemyZombie.health);
+	};
+	if (wolf.health <= 20) {
+		player3Health.text(wolf.health);
+	};
+	if (enemyZombie.health <= 0) {
+		enemy3Health.text('0');
+	};
+	if (wolf.health <= 0) {
+		player3Health.text('0');
+	};
 });
 
 //-----------------------//
@@ -286,6 +376,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Player = function Player() {
 	this.health = 20;
+	this.hit = function (num1) {
+		var hitPoints = num1;
+		return this.health = this.health - hitPoints;
+	};
 };
 
 exports["default"] = Player;

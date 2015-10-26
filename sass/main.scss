@@ -206,6 +206,13 @@ body {
 	border: 1px solid white;
 	box-shadow: 0 0 50px white;
 }
+
+.hpbox1 {
+	color: red;
+}
+.hpbox2 {
+	color: red;
+}
 .hitpoints1 {
 	width: 95px;
 	height: 60px;
@@ -265,6 +272,14 @@ body {
 	padding-left: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	p {
+		color: red;
+		margin: 0;
+	}
+}
+.hitbox1text {
+		color: red;
+		font-size: 2em;
 }
 .hitbox2 {
 	width: 95px;
@@ -277,7 +292,16 @@ body {
 	padding-left: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	p {
+		color: red;
+		margin: 0;
+	}
 }
+.hitbox2text {
+		color: red;
+		font-size: 2em;
+}
+
 
 
 

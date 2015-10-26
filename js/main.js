@@ -37,11 +37,16 @@ enemyVampireCardRequest.then( function (response) {
 function drawRandomZombie () {
 	return zombieDeck[ Math.floor(Math.random() * zombieDeck.length) ];
 };
+
 function drawZombieCard () {
 	var currentZombieCard = drawRandomZombie();
 	if (currentZombieCard) {
 		$('.magicCard1').remove();
 		$('.player1Card').append(currentZombieCard.cardInstance());
+
+		let num1 = currentZombieCard.power;
+		enemyVampire.hit(num1);
+		// $('.hitbox2text').append(num1);
 	};
 };
 
@@ -53,23 +58,42 @@ function drawEnemyVampireCard () {
 	if (currentEnemyVampireCard) {
 		$('.magicCard2').remove();
 		$('.player2Card').append(currentEnemyVampireCard.cardInstance());
+
+		let num2 = currentEnemyVampireCard.power;
+		zombie.hit(num2);
+		// $('.hitbox1text').append(num2);
 	};
 };
+
+// Player and Enemy Instances
+let zombie = new Player();
+let enemyVampire = new Enemy();
 
 // DOM Nodes Selected
 let playerHealth = $('.playerHealth');
 let enemyHealth = $('.enemyHealth');
 
-let playerAttack = $('#btnDrawZombie');
+// Show current (default) health and hitpoints
+playerHealth.text(zombie.health);
+enemyHealth.text(enemyVampire.health);
 
-// Show current (default) health
-playerHealth.text(zombieDeck.health);
-enemyHealth.text(enemyVampireDeck.health);
-console.log(playerHealth);
-
+// Setting up ON Events
 $('#btnDrawZombie').on('click', function (){
 	drawZombieCard(),
 	drawEnemyVampireCard();
+
+	if (enemyVampire.health <= 20) {
+		enemyHealth.text(enemyVampire.health);
+	}; 
+	if (zombie.health <= 20) {
+		playerHealth.text(zombie.health);
+	};
+	if (enemyVampire.health <= 0) {
+		enemyHealth.text('0');
+	};
+	if (zombie.health <= 0) {
+		playerHealth.text('0');
+	};
 });
 
 //-----------------------//
@@ -109,6 +133,9 @@ function drawVampireCard () {
 		if (currentVampireCard) {
 			$('.magicCard1').remove();
 			$('.player1Card').append(currentVampireCard.cardInstance());
+			
+			let num1 = currentVampireCard.power;
+			enemyWolf.hit(num1);
 	};
 };
 
@@ -120,12 +147,40 @@ function drawEnemyWolfCard () {
 		if (currentEnemyWolfCard) {
 			$('.magicCard2').remove();
 			$('.player2Card').append(currentEnemyWolfCard.cardInstance());
+
+		let num2 = currentEnemyWolfCard.power;
+		vampire.hit(num2);
 	};
 };
+
+// Player and Enemy Instances
+let vampire = new Player();
+let enemyWolf = new Enemy();
+
+// DOM Nodes Selected
+let player2Health = $('.player2Health');
+let enemy2Health = $('.enemy2Health');
+
+// Show current (default) health and hitpoints
+player2Health.text(vampire.health);
+enemy2Health.text(enemyWolf.health);
 
 $('#btnDrawVampire').on('click', function (){
 	drawVampireCard(),
 	drawEnemyWolfCard();
+
+	if (enemyWolf.health <= 20) {
+		enemy2Health.text(enemyWolf.health);
+	}; 
+	if (vampire.health <= 20) {
+		player2Health.text(vampire.health);
+	};
+	if (enemyWolf.health <= 0) {
+		enemy2Health.text('0');
+	};
+	if (vampire.health <= 0) {
+		player2Health.text('0');
+	};
 });
 
 //-----------------------//
@@ -165,7 +220,10 @@ function drawWolfCard () {
 		if (currentWolfCard) {
 			$('.magicCard1').remove();
 			$('.player1Card').append(currentWolfCard.cardInstance());
-	}
+
+			let num1 = currentWolfCard.power;
+			enemyZombie.hit(num1);
+	};
 };
 
 function drawRandomEnemyZombie () {
@@ -176,12 +234,40 @@ function drawEnemyZombieCard () {
 		if (currentEnemyZombieCard) {
 			$('.magicCard2').remove();
 			$('.player2Card').append(currentEnemyZombieCard.cardInstance());
+
+		let num2 = currentEnemyZombieCard.power;
+		wolf.hit(num2);
 	};
 };
+
+// Player and Enemy Instances
+let wolf = new Player();
+let enemyZombie = new Enemy();
+
+// DOM Nodes Selected
+let player3Health = $('.player3Health');
+let enemy3Health = $('.enemy3Health');
+
+// Show current (default) health and hitpoints
+player3Health.text(wolf.health);
+enemy3Health.text(enemyZombie.health);
 
 $('#btnDrawWolf').on('click', function (){
 	drawWolfCard(),
 	drawEnemyZombieCard();
+
+	if (enemyZombie.health <= 20) {
+	enemy3Health.text(enemyZombie.health);
+	}; 
+	if (wolf.health <= 20) {
+		player3Health.text(wolf.health);
+	};
+	if (enemyZombie.health <= 0) {
+		enemy3Health.text('0');
+	};
+	if (wolf.health <= 0) {
+		player3Health.text('0');
+	};
 });
 
 //-----------------------//

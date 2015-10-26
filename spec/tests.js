@@ -13,7 +13,7 @@ var Card = function Card(stats) {
 };
 
 Card.prototype.cardInstance = function () {
-  return "\n\t\t\t<img class=\"magicCard1\" src=\"" + this.editions + "\">\n\t\t\t";
+  return "\n\t\t<img class=\"magicCard1\" src=\"" + this.editions + "\">\n\t\t";
 };
 
 exports["default"] = Card;

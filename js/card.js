@@ -8,8 +8,8 @@ let Card = function (stats) {
 
 Card.prototype.cardInstance = function () {
 	return `
-			<img class="magicCard1" src="${this.editions}">
-			`;
+		<img class="magicCard1" src="${this.editions}">
+		`;
 };
 
 export default Card;
